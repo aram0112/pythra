@@ -32,6 +32,11 @@ start_link(Paths=[Path | _], Opts) when is_list(Path) ->
    {ok, Py} = python:start_link(Opts),
    on_start(Py),
    {ok, Py};
+
+start_link(Paths=[Path | _]) when is_list(Path) ->
+   start_link(Paths, [])
+start_link(Path) when is_list(Path) ->
+   start_link([Path], []).
 start_link(Path, Opts) when is_list(Path) ->
    start_link([Path], Opts).
 
