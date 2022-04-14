@@ -27,10 +27,10 @@
 
 start_link() ->
     start_link([]).
-start_link(Paths = [Path | _], Opts) when is_list(Path) ->
+start_link(Paths = [Path | _], Extra) when is_list(Path) ->
     PythraPath = filename:join(code:priv_dir(pythra), "python"),
     PPaths = [PythraPath | Paths],
-    Opts = lists:merge([{python_path, PPaths}, {python, ?PYTHON_VERSION}], Opts),
+    Opts = lists:merge([{python_path, PPaths}, {python, ?PYTHON_VERSION}], Extra),
     {ok, Py} = python:start_link(Opts),
     on_start(Py),
     {ok, Py};
