@@ -10,7 +10,7 @@
 -author("heyoka").
 
 %% API
--export([start_link/0, start_link/1, stop/1]).
+-export([start_link/0, start_link/1, start_link/2, stop/1]).
 
 -export([
     pythra_call/3, pythra_call/4,
